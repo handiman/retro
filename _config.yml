@@ -1,0 +1,23 @@
+title: Retro.css
+repository: handiman/retro
+author:
+  name: Henrik Becker
+  github: handiman
+permalink: pretty
+plugins:
+  - jekyll-readme-index
+  - jekyll-seo-tag
+exclude: [ "Gemfile*", "*.orig" ]
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: retro
+      image:
+        path: https://www.henrikbecker.net/assets/img/landscape-800x534.jpg
+        alt: Henrik Becker
+        height: 534
+        width: 800      
+readme_index:
+  remove_originals: true
+  with_frontmatter: false
