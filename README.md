@@ -1,3 +1,5 @@
 # Don't you miss how the web looked back in the day?
+
 ---
-![https://github.com/handiman/retro/blob/master/pixel.gif](https://www.firefox.com/);
+
+![https://handiman.github.io/retro/getnet3.gif](https://www.firefox.com/);
