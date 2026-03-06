@@ -41,7 +41,7 @@ layout: null
             </tr>{% assign all_files = all_files | split: "$" | sort %}{% for file in all_files %}
             <tr>
                 <td><a href="{{ file | split: '|' | slice: 1  | join: '' | absolute_url }}">{{ file | split: '|' | slice: 0 }}</a></td>
-                <td>{{ site.time | date: "%d-%b-%Y" }}</td>
+                <td>{{ site.time | date: "%d-%b-%Y %H:%M" }}</td>
                 <td>-</td>
                 <td></td>
             </tr>
