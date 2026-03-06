@@ -19,8 +19,10 @@ layout: null
         }
     </style>
 </head>
-
+{% assign all_files = "" %}
 <body>
+    {% for page in site.pages %}{% unless page.url == "/" %}{% assign all_files = all_files | append: page.name | append : "|"| append: page.url | append: "$" %}{% endunless %}{% endfor %}
+    {% for file in site.static_files %}{% assign all_files = all_files | append: file.name | append: "|" | append: file.name | append: "$" %}{% endfor %}
     <h1>Index of {{ page.url }}</h1>
     <hr>
     <table border="0" cellpadding="0" cellspacing="0">
@@ -36,15 +38,9 @@ layout: null
                 <td>01-Jan-1999 12:00</td>
                 <td>-</td>
                 <td></td>
-            </tr>
+            </tr>{% assign all_files = all_files | split: "$" %}{% for file in all_files | split: "$" | sort %}
             <tr>
-                <td><a href="{{ '/default.htm' | absolute_url }}">default.htm</a></td>
-                <td>{{ site.time | date: "%d-%b-%Y" }}</td>
-                <td>-</td>
-                <td></td>
-            </tr>{% for file in site.static_files %}
-            <tr>
-                <td><a href="{{ file.name | absolute_url }}">{{ file.name }}</a></td>
+                <td><a href="{{ file | split: '|' | slice: 1 }}">{{ file | split: '|' | slice: 0 }}</a></td>
                 <td>{{ site.time | date: "%d-%b-%Y" }}</td>
                 <td>-</td>
                 <td></td>
@@ -54,5 +50,5 @@ layout: null
     </table>
 
 </body>
-
+{% assign all_pages = nil %}
 </html>
