@@ -3,7 +3,7 @@ repository: handiman/retro
 author:
   name: Henrik Becker
   github: handiman
-permalink: :id
+permalink: pretty
 plugins:
   - jekyll-readme-index
   - jekyll-seo-tag
@@ -19,9 +19,10 @@ defaults:
         height: 534
         width: 800      
   - scope:
-      path: "README.md"        
+      path: README.md
     values:
       layout: dir
 readme_index:
-  remove_originals: true
+  enabled: true
+  remove_originals: false
   with_frontmatter: false

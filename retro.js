@@ -1,4 +1,4 @@
-class BlinkText extends HTMLElement {
+class RetroBlink extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -32,7 +32,7 @@ class BlinkText extends HTMLElement {
   }
 }
 
-class RainbowText extends HTMLElement {
+class RetroRainbow extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
@@ -63,7 +63,7 @@ class RainbowText extends HTMLElement {
   }
 }
 
-class MarqueeText extends HTMLElement {
+class RetroMarquee extends HTMLElement {
   static get observedAttributes() {
     return ["speed"];
   }
@@ -118,7 +118,7 @@ class MarqueeText extends HTMLElement {
   }
 }
 
-class ColoredLine extends HTMLElement {
+class RetroHr extends HTMLElement {
   static get observedAttributes() {
     return ["color"];
   }
@@ -129,7 +129,7 @@ class ColoredLine extends HTMLElement {
       <table width="100%" bgcolor="${this.getAttribute("color")}" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <img src="./pixel.gif" width="100" height="1" />
+            <img src="./pixel.gif" width="1" height="1" />
           </td>
         </tr>
       </table>
@@ -137,19 +137,37 @@ class ColoredLine extends HTMLElement {
   }
 }
 
-customElements.define("retro-blink", BlinkText);
-customElements.define("retro-rainbow", RainbowText);
-customElements.define("retro-marquee", MarqueeText);
-customElements.define("retro-hr", ColoredLine);
+class RetroCounter extends HTMLElement {
+  static get observedAttributes() {
+    return ["value"];
+  }
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.innerHTML = `
+      <style>
+        .counter {
+          font-family: "Courier New", monospace;
+          background: #000;
+          color: #0f0;
+          padding: 2px 4px;
+          display: inline-block;
+        }
+      </style>
+      <span class="counter">${this.getAttribute("value") || 1}</span>
+    `;
+  }
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll("form").forEach((form) => {
-    form.onsubmit = function () {
-      alert("Thank ye!");
-      return false;
-    };
+customElements.define("retro-blink", RetroBlink);
+customElements.define("retro-rainbow", RetroRainbow);
+customElements.define("retro-marquee", RetroMarquee);
+customElements.define("retro-hr", RetroHr);
+customElements.define("retro-counter", RetroCounter);
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("img.corrupt").forEach((img) => {
+    img.style.backgroundImage = `url("${img.getAttribute("src")}")`;
+    img.src = "";
   });
-});
-
-// The obligatory javascript bugs
-//window.onload = () => alert(NaN);
+});   

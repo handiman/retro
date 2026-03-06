@@ -1,78 +1,103 @@
 ---
+permalink: /default.htm
 ---
-<table>
-    <thead>
-        <th>The</th>
-        <th></th>
-        <th>Tables</th>
-    </thead>
+<table style="width:100%;margin-top:2em">
     <tbody>
         <tr>
-            <td>I</td>
-            <td>like</td>
-            <td><x-blink>coffee</x-blink></td>
+            <td style="width:350px;vertical-align: top;" rowspan="2"><a href="{{ '/' | absolute_url }}"><img
+                        class="corrupt photo" style="border:1px solid blue"
+                        src="https://www.henrikbecker.net/assets/img/portrait-800x1199.jpg" width="150" /></a></td>
+            <td colspan="2">
+                <h1>Welcome to my home page!</h1>
+                Things I like:
+                <dl>
+                    <dt><retro-blink><b style="color:maroon">Coffee:</b></retro-blink></dt>
+                    <dd><a target="_new"
+                            href="https://en.wikipedia.org/wiki/Coffee">https://en.wikipedia.org/wiki/Coffee</a></dd>
+                    <dt>Coding:</dt>
+                    <dd><a href=https://www.henrikbecker.net/cv>https://www.henrikbecker.net/cv</a></dd>
+                </dl>
+            </td>
         </tr>
         <tr>
-            <td>I</td>
-            <td>like</td>
-            <td>tea</td>
+            <td colspan="2">
+                <form class="contact-form">
+                    <input type="hidden" name="sender" />
+                    <input type="hidden" name="ts_eliot" />
+                    <table>
+                        <thead>
+                            <th colspan="2"><retro-blink>Contact me!</retro-blink></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Name:</b></td>
+                                <td><input type="text" name="name" placeholder="Your name" /></td>
+                            </tr>
+                            <tr>
+                                <td><b>Email:</b></td>
+                                <td><input type="text" name="email" placeholder="Your email" /></td>
+                            </tr>
+                            <tr>
+                                <td>Message:</td>
+                                <td><textarea name="body" placeholder="Message" rows="5"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit">Send</button></td>
+                                <td class="status"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </td>
         </tr>
     </tbody>
 </table>
 
-<h2>And forms</h2>
-
-<form>
-    <input type="text"><br />
-    <textarea></textarea><br />
-    <input type="radio" name="radio" value="1"><br />
-    <input type="radio" name="radio" value="2"><br />
-    <input type="checkbox" value="1"><br />
-    <input type="submit"><br />
-</form>
-
-<style>
-    .logged-in .live,
-    .env-production .live,
-    .page-responsive .live,
-    .colorblind-themes-v1 .live {
-        display: none;
-    }
-</style>
-
-<h2>The rainbow text</h2>
-<retro-rainbow>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</retro-rainbow>
-
-<h2>Why not blinking rainbow text while we're at it?</h2>
-<retro-blink>
+<p>
+    I'm a senior backend consultant based in Stockholm, Sweden.
+    I started coding professionally in 1999 and has since worked across industries including finance, insurance and
+    online gaming. With deep expertise in .NET, system integration, and cloud-native architecture, I help teams
+    build backend systems that are scalable, maintainable, and built to last.
+</p>
+<retro-marquee speed="50">
     <retro-rainbow>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
+        I run a one-person tech company focused on delivering clean, automated solutions that reduce complexity and
+        support long-term growth. I work closely with clients to understand their needs, design pragmatic solutions,
+        and write code that’s easy to read, test, and evolve.
     </retro-rainbow>
-</retro-blink>
+</retro-marquee>
 
-<h2>And... drumroll..</h2>
-<h3>
-    <retro-blink>
-        <retro-marquee>
-            <retro-rainbow>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-            </retro-rainbow>
-        </retro-marquee>
-    </retro-blink>
-</h3>
-
-<h2>Colored lines :)</h2>
 <retro-hr color="#FFFF00"></retro-hr>
 
+<h2>Don't you miss web 1.0?</h2>
+<p style="text-align:center">
+    You could publish your <a class="mailto"
+        href="&#109;&#114;&#111;&#70;&#32;&#116;&#99;&#97;&#116;&#110;&#111;&#67;&#61;&#116;&#99;&#101;&#106;&#98;&#117;&#115;&#63;&#101;&#115;&#46;&#114;&#101;&#107;&#99;&#101;&#98;&#107;&#105;&#114;&#110;&#101;&#104;&#64;&#109;&#97;&#112;&#115;&#58;&#111;&#116;&#108;&#105;&#97;&#109;"><img
+            src="{{ '/email.gif' | absolute_url }}" /></a> online without worrying about spam or other abuse?<br />
+</p>
 
-<script src="{{ '/retro.js' | absolute_url }}"></script>
+<table style="width:100%">
+    <tbody>
+        <tr>
+            <td style="text-align: left;"><a href="/404">Prev</a></td>
+            <td style="text-align:center">This site is part of a webring</td>
+            <td style="text-align: right;"><a href="/end">Next</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="text-align: center;">
+    <img src="{{ '/uconst.gif' | absolute_url }}" style="width:48px;height:48px" /><br />
+    This page has been viewed <retro-counter value="{{ site.time | date: '%Y' }}"></retro-counter> times.<br />
+    Best viewed with:<br />
+    <a target="_blank" href="https://www.firefox.com/"><img src="{{ '/getnet3.gif' | absolute_url }}" /></a><br />
+</div>
+
+<div>
+    <script>
+        // The obligatory javascript bugs
+        window.onload = () => alert(NaN);
+    </script>
+    // The obligatory javascript bugs
+    window.onload = () => alert(NaN);
+</div>

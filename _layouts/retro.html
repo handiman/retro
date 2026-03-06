@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
 
@@ -10,8 +13,23 @@
 
 <body>
     {{ content }}
-    <hr />
-    <p><a target="_blank" href="https://www.firefox.com/"><img src="{{ '/getnet3.gif' | absolute_url }}" /></a></p>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("form").forEach((form) => {
+                form.addEventListener("submit", form => alert("Thank ye!"));
+                form.onsubmit = () => false;
+            });
+            document.querySelectorAll("a.mailto").forEach(a => {
+                const href = a.getAttribute("href");
+                let mailto = "";
+                for (var i = href.length - 1; i >= 0; i--) {
+                    mailto += href[i];
+                }
+                a.href = mailto;
+            })
+        });
+    </script>
+    <script src="{{ '/retro.js' | absolute_url }}"></script>
 </body>
 
 </html>

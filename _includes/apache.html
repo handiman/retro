@@ -1,8 +1,11 @@
 <hr />
 <address>Apache/1.3.12 Server at <span id="host">example.com</span> Port <span id="port">80</span></address>
 <script>
+    document.body.style.backgroundColor = "#FFFFFF";
     document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById("host").innerHTML = document.location.host.split(':')[0];
-        document.getElementById("port").innerHTML = document.location.host.split(':')[1];
+        const host = document.location.host.split(":")[0];
+        const port = document.location.host.split(":")[1];
+        document.getElementById("host").textContent = host;
+        document.getElementById("port").textContent = port ? port : "https:" === document.location.protocol ? 443 : 80;
     });
 </script>

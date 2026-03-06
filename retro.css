@@ -20,39 +20,33 @@ table {
   border: 1px solid;
   border-color: #d3d3d3 #404040 #404040 #d3d3d3;
 }
+thead,
+tbody,
+tr,
 th,
 td {
-  padding: 2px;
-  margin: 2px;
+  border: inherit;
+  margin: inherit;
+  padding: inherit;
 }
-th:first-child,
-td:first-child {
-  margin-left: 0;
-}
-
-th.last-child,
-td:last-child {
-  margin-right: 0;
-}
-
-tr:first-child {
-  th,
-  td {
-    margin-top: 0;
-  }
-}
-tr:last-child {
-  th,
-  td {
-    margin-bottom: 0;
-  }
-}
-
-td,
 th,
+td {
+  padding: 4px;
+  margin: 4px;
+  border: inherit;
+}
+
 input,
-textarea {
+textarea,
+button,
+select {
   border: 1px solid;
+}
+
+input,
+textarea,
+th,
+td {
   border-color: #404040 #d3d3d3 #d3d3d3 #404040;
 }
 
@@ -60,7 +54,6 @@ button,
 input[type="button"],
 input[type="submit"] {
   background-color: #c0c0c0;
-  border: 1px solid;
   border-color: #d3d3d3 #404040 #404040 #d3d3d3;
 }
 
@@ -69,3 +62,25 @@ table,
 form {
   margin-bottom: 2em;
 }
+
+img.photo {
+  image-rendering: pixelated;
+}
+
+img.corrupt {
+  background-size: 105% 95%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+img.corrupt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  clip-path: polygon(0 70%, 100% 72%, 100% 100%, 0 98%);
+  transform: translateX(8px);
+  opacity: 0.7;
+  mix-blend-mode: screen;
+}
+

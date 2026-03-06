@@ -1,38 +1,58 @@
-<h1>Index of {{ page.url }}</h1>
-<hr>
-<table border="0" cellpadding="0" cellspacing="0">
-    <thead style="font-weight: normal;text-align: left;vertical-align: top;"">
-        <th style="width:35%">Name</th>
-        <th style="width:25%">Last modified</th>
-        <th style="width:10%">Size</th>
-        <th style="width:20%">Description</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="../">Parent Directory</a></td>
-            <td>01-Jan-1999 12:00</td>
-            <td>-</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><a href="{{ '/default.htm' | absolute_url }}">default.htm</a></td>
-            <td>{{ site.time | date: "%d-%b-%Y" }}</td>
-            <td>-</td>
-            <td></td>
-        </tr>{% for file in site.static_files %} 
-        <tr>
-            <td><a href="{{ file.name | absolute_url }}">{{ file.name }}</a></td>
-            <td>{{ site.time | date: "%d-%b-%Y" }}</td>
-            <td>-</td>
-            <td></td>
-        </tr> 
-    {% endfor %}
-    </tbody>
-</table>
-         -   
-{% include apache.html %}
-{% comment %}
-<a href="image1.gif">image1.gif</a>              12-Feb-1999 09:14   12K  
-<a href="notes.txt">notes.txt</a>               03-Mar-1999 16:22    3K  
-<a href="subfolder/">subfolder/</a>              10-Apr-1999 08:55    -   
-{% endcomment %}
+---
+layout: null
+---
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Index of {{ page.url }}</title>
+    {% seo title=false %}
+    <link rel="stylesheet" href="{{ '/retro.css' | absolute_url }}" />
+    <style>
+        html,body {
+            background-color: white;
+        }
+        table,thead,tbody,tr,th,td {
+            border: 0
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Index of {{ page.url }}</h1>
+    <hr>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <thead style="font-weight: normal;text-align: left;vertical-align: top;"">
+        <th style=" width:35%">Name</th>
+            <th style="width:25%">Last modified</th>
+            <th style="width:10%">Size</th>
+            <th style="width:20%">Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="../">Parent Directory</a></td>
+                <td>01-Jan-1999 12:00</td>
+                <td>-</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><a href="{{ '/default.htm' | absolute_url }}">default.htm</a></td>
+                <td>{{ site.time | date: "%d-%b-%Y" }}</td>
+                <td>-</td>
+                <td></td>
+            </tr>{% for file in site.static_files %}
+            <tr>
+                <td><a href="{{ file.name | absolute_url }}">{{ file.name }}</a></td>
+                <td>{{ site.time | date: "%d-%b-%Y" }}</td>
+                <td>-</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>
