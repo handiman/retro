@@ -38,9 +38,9 @@ layout: null
                 <td>01-Jan-1999 12:00</td>
                 <td>-</td>
                 <td></td>
-            </tr>{% assign all_files = all_files | split: "$" %}{% for file in all_files | split: "$" | sort %}
+            </tr>{% assign all_files = all_files | split: "$" | sort %}{% for file in all_files %}
             <tr>
-                <td><a href="{{ file | split: '|' | slice: 1 | absolute_url }}">{{ file | split: '|' | slice: 0 }}</a></td>
+                <td><a href="{{ file | split: '|' | slice: 1  | join: '' | absolute_url }}">{{ file | split: '|' | slice: 0 }}</a></td>
                 <td>{{ site.time | date: "%d-%b-%Y" }}</td>
                 <td>-</td>
                 <td></td>
