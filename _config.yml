@@ -1,4 +1,4 @@
-title: Retro.css
+title: Henrik Becker
 repository: handiman/retro
 author:
   name: Henrik Becker
@@ -23,6 +23,5 @@ defaults:
     values:
       layout: dir
 readme_index:
-  enabled: true
   remove_originals: false
   with_frontmatter: false
