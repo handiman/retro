@@ -60,4 +60,4 @@ jobs:
         name: ${{env.NEW_TAG}}
         body: ${{ steps.changelog.outputs.changes }}
         token: ${{ secrets.GITHUB_TOKEN }} 
-        artifacts: "LICENSE,README.md,retro.css,retro.js" 
+        artifacts: "LICENSE,README.md,retro.html,retro.css,retro.js" 
