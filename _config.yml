@@ -7,7 +7,7 @@ permalink: pretty
 plugins:
   - jekyll-readme-index
   - jekyll-seo-tag
-exclude: [ "Gemfile*", "*.orig" ]
+exclude: [ "Gemfile*", "*.orig", retro.html ]
 defaults:
   - scope:
       path: ""

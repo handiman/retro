@@ -1,25 +1,39 @@
 name: Release
-
+   
 on: 
   workflow_dispatch:
+    inputs:
+      newTag: 
+        type: string
+        required: true
+        description: New version
   push:
     tags:
     - v[0-9]+.[0-9]+.[0-9]+
 
+permissions: 
+  contents: write
+env:
+  NEW_TAG: ${{ inputs.newTag || github.ref_name }}
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
-    permissions: 
-      contents: write
     steps:
     - name: Checkout
-      if: github.ref_type == 'tag'
       uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
+    - run: echo ${{ github.event_name }}
+
+    - name: Tag
+      if: ${{ github.event_name == 'workflow_dispatch' }}
+      run: |
+        git tag ${{ inputs.newTag }}        
+        git push --tags
+
     - name: Get previous tag
-      if: github.ref_type == 'tag'
       id: previousTag
       run: |
         name=$(git --no-pager tag --sort=creatordate --merged ${{ github.ref_name }} | tail -2 | head -1)
@@ -27,24 +41,23 @@ jobs:
         echo "previousTag=$name" >> $GITHUB_ENV
 
     - name: Update CHANGELOG
-      if: github.ref_type == 'tag'
       id: changelog
       uses: requarks/changelog-action@v1
       with:
         token: ${{ github.token }}
-        fromTag: ${{ github.ref_name }}
+        fromTag: ${{env.NEW_TAG}}
         toTag: ${{ env.previousTag }}
         writeToFile: false
         includeInvalidCommits: true
 
     - name: Create Release
-      if: github.ref_type == 'tag'
       uses: ncipollo/release-action@v1.20.0
       with:
         allowUpdates: true
         draft: false
         makeLatest: true
-        name: ${{ github.ref_name }}
+        tag: ${{env.NEW_TAG}}
+        name: ${{env.NEW_TAG}}
         body: ${{ steps.changelog.outputs.changes }}
         token: ${{ secrets.GITHUB_TOKEN }} 
-        artifacts: "LICENSE,README.md,retro.css,retro.js"
+        artifacts: "LICENSE,README.md,retro.css,retro.js" 
