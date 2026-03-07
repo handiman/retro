@@ -1,4 +1,4 @@
-name: CI/CD
+name: Release
 
 on: 
   workflow_dispatch:
@@ -7,17 +7,19 @@ on:
     - master
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     permissions: 
       contents: write
     steps:
     - name: Checkout
+      if: github.ref_type == 'tag'
       uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - name: Get previous tag
+      if: github.ref_type == 'tag'
       id: previousTag
       run: |
         name=$(git --no-pager tag --sort=creatordate --merged ${{ github.ref_name }} | tail -2 | head -1)
@@ -44,4 +46,4 @@ jobs:
         name: ${{ github.ref_name }}
         body: ${{ steps.changelog.outputs.changes }}
         token: ${{ secrets.GITHUB_TOKEN }} 
-        artifacts: "LICENSE,README.md"
+        artifacts: "LICENSE,README.md,retro.css,retro.js"
