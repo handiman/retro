@@ -35,6 +35,7 @@ jobs:
         fromTag: ${{ github.ref_name }}
         toTag: ${{ env.previousTag }}
         writeToFile: false
+        includeInvalidCommits: true
 
     - name: Create Release
       if: github.ref_type == 'tag'
