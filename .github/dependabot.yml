@@ -10,6 +10,12 @@ updates:
     commit-message:
       prefix: chore
       include: scope
+    ignore:
+      # github-pages pins jekyll-remote-theme 0.4.3, which needs rubyzip < 3.0, so rubyzip 3.x
+      # cannot be installed. The site does not use remote_theme. Drop this once github-pages
+      # ships a jekyll-remote-theme that supports rubyzip 3.
+      - dependency-name: rubyzip
+        update-types: ["version-update:semver-major"]
     groups:
       # One PR for all routine bumps instead of one per package.
       minor-and-patch:
