@@ -53,13 +53,17 @@ class RetroRainbow extends HTMLElement {
     ];
 
     var words = this.textContent.split(" ");
-    var out = "";
+    var fragment = document.createDocumentFragment();
 
+    // Words are set as text, never parsed as HTML.
     for (var i = 0; i < words.length; i++) {
-      out += `<font style="color:${colors[i % colors.length]}">${words[i]}</font> `;
+      var font = document.createElement("font");
+      font.style.color = colors[i % colors.length];
+      font.textContent = words[i];
+      fragment.append(font, " ");
     }
 
-    this.innerHTML = out;
+    this.replaceChildren(fragment);
   }
 }
 
@@ -126,7 +130,7 @@ class RetroHr extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.innerHTML = `
-      <table width="100%" bgcolor="${this.getAttribute("color")}" border="0" cellpadding="0" cellspacing="0">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td>
             <img src="./pixel.gif" width="1" height="1" />
@@ -134,6 +138,10 @@ class RetroHr extends HTMLElement {
         </tr>
       </table>
     `;
+    var color = this.getAttribute("color");
+    if (color !== null) {
+      this.shadowRoot.querySelector("table").setAttribute("bgcolor", color);
+    }
   }
 }
 
@@ -154,8 +162,10 @@ class RetroCounter extends HTMLElement {
           display: inline-block;
         }
       </style>
-      <span class="counter">${this.getAttribute("value") || 1}</span>
+      <span class="counter"></span>
     `;
+    this.shadowRoot.querySelector(".counter").textContent =
+      this.getAttribute("value") || 1;
   }
 }
 
