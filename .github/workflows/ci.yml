@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       with:
         fetch-depth: 0
 
@@ -42,7 +42,7 @@ jobs:
 
     - name: Update CHANGELOG
       id: changelog
-      uses: requarks/changelog-action@v1
+      uses: requarks/changelog-action@7ce6be4c4d2233ae2a943694ca34f23aeafa1054 # v1
       with:
         token: ${{ github.token }}
         fromTag: ${{env.NEW_TAG}}
@@ -51,7 +51,7 @@ jobs:
         includeInvalidCommits: true
 
     - name: Create Release
-      uses: ncipollo/release-action@v1.21.0
+      uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
       with:
         allowUpdates: true
         draft: false
